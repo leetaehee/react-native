@@ -1,5 +1,6 @@
 import React from 'react';
-import { Text, View, Button } from 'react-native';
+import { Text, View } from 'react-native';
+import MyButton from './components/MyButtons';
 
 const App = () => {
     return (
@@ -11,8 +12,15 @@ const App = () => {
                 justifyContent: 'center',
             }}
         >
-            <Text style={{ fontSize: 30, marginBottom: 10 }}>Button Component</Text>
-            <Button title="Button" onPress={() => alert('Click !!!')}/>
+            <Text 
+                style={{ 
+                    fontSize: 30, 
+                    marginBottom: 10 
+                }}
+            >
+                My Button Component
+            </Text>
+            <MyButton />
         </View>
     );
 };
