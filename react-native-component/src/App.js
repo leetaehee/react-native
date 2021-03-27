@@ -1,7 +1,8 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import Counter from './components/Counter';
-import EventButton from './components/EventButton';
+import EventInput from './components/EventInput';
+import EventButton from './components/EventInput';
 
 const App = () => {
     return (
@@ -13,7 +14,7 @@ const App = () => {
                 justifyContent: 'center',
             }}
         >
-            <EventButton />
+            <EventInput />
         </View>
     );
 };
