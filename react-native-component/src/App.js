@@ -12,14 +12,9 @@ const App = () => {
                 justifyContent: 'center',
             }}
         >
-            <Text 
-                style={{ 
-                    fontSize: 30, 
-                    marginBottom: 10 
-                }}
-            >
-                My Button Component
-            </Text>
+            <Text style={{ fontSize: 30, marginBottom: 10 }}>Props</Text>
+            <MyButton title="button" />
+            <MyButton title="button">Children Props</MyButton>
             <MyButton />
         </View>
     );
