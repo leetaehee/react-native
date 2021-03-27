@@ -13,9 +13,11 @@ const App = () => {
             }}
         >
             <Text style={{ fontSize: 30, marginBottom: 10 }}>Props</Text>
-            <MyButton title="button" />
-            <MyButton title="button">Children Props</MyButton>
-            <MyButton />
+            <MyButton title="Button" onPress={() => alert('props')} />
+            <MyButton title="Button" onPress={() => alert('children')}>
+                Children Props
+            </MyButton>
+            <MyButton onPress={() => alert('default')} />
         </View>
     );
 };
