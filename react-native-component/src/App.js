@@ -1,8 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import Counter from './components/Counter';
-import EventInput from './components/EventInput';
-import EventButton from './components/EventInput';
+import PressableButton from './components/PressableButton';
 
 const App = () => {
     return (
@@ -14,7 +12,7 @@ const App = () => {
                 justifyContent: 'center',
             }}
         >
-            <EventInput />
+            <PressableButton title="pressable" />
         </View>
     );
 };
