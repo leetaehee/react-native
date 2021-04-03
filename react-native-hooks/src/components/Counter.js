@@ -16,7 +16,13 @@ const Counter = () => {
             <Button 
                 title="+"
                 onPress={() => {
-                    setCount(count + 1);
+                    /*
+                        setCount(count + 1);
+                        setCount(count + 1);
+                        console.log(`count: ${count}`);
+                    */
+                   setCount(prevCount => prevCount + 1);
+                   setCount(prevCount => prevCount + 1);
                 }}
             />
             <Button 
