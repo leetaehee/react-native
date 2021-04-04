@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 import Counter from './components/Counter';
 import Form from './components/Form';
 import Button from './components/Button';
+import Length from './components/Length';
 
 const Container = styled.View`
     flex: 1;
@@ -12,6 +13,13 @@ const Container = styled.View`
 `;
 
 const App = () => {
+    return (
+        <Container>
+            <Length />
+        </Container>
+    );
+    
+    /*
     const [isVisible, setIsVisible] = useState(true);
 
     return (
@@ -23,6 +31,7 @@ const App = () => {
             {isVisible && <Form />}
         </Container>
     );
+    */
 
     /*
     return (
