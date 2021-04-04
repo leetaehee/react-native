@@ -4,6 +4,7 @@ import Counter from './components/Counter';
 import Form from './components/Form';
 import Button from './components/Button';
 import Length from './components/Length';
+import Dog from './components/Dog';
 
 const Container = styled.View`
     flex: 1;
@@ -15,9 +16,17 @@ const Container = styled.View`
 const App = () => {
     return (
         <Container>
+            <Dog />
+        </Container>
+    );
+
+    /*
+    return (
+        <Container>
             <Length />
         </Container>
     );
+    */
     
     /*
     const [isVisible, setIsVisible] = useState(true);
