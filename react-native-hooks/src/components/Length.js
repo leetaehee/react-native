@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styled from 'styled-components/native';
 import Button from './Button';
 
@@ -16,13 +16,12 @@ const list = ['JavaScript', 'Expo', 'Expo', 'React Native'];
 let idx = 0;
 const Length = () => {
     const [text, setText] = useState(list[0]);
-    const [length, setLength] = useState('');
 
     const _onPress = () => {
-        setLength(getLength(text));
         ++idx;
         if (idx < list.length) setText(list[idx]);
     };
+    const length = useMemo(() => getLength(text), [text]);
 
     return (
         <>
@@ -33,4 +32,4 @@ const Length = () => {
     );
 };
 
-export default Length;
+export default Length
