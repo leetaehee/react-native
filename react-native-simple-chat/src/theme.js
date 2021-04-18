@@ -8,6 +8,6 @@ const colors = {
 };
 
 export const theme = {
-    background: colors.whtie,
+    background: colors.white,
     text: colors.black,
 };
