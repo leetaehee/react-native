@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 import { Image, Input } from '../components';
 import { images } from '../utils/images';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { KeyboardAvoidingView } from 'react-native';
 
 const Container = styled.View`
     flex: 1;
