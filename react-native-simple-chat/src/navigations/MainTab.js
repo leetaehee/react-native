@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { getFocusedRouteNameFromRoute } from "@react-navigation/native";
 import { Profile, ChannelList } from "../screens";
 import { MaterialIcons } from "@expo/vector-icons";
 import { ThemeContext } from "styled-components/native";
@@ -21,9 +22,8 @@ const MainTab = ({ navigation, route }) => {
   const theme = useContext(ThemeContext);
 
   useEffect(() => {
-    const titles = route.state?.routeNames || ["Channels"];
-    const index = route.state?.index || 0;
-    navigation.setOptions({ headerTitle: titles[index] });
+    const title = getFocusedRouteNameFromRoute(route) ?? "Channels";
+    navigation.setOptions({ headerTitle: title });
   }, [route]);
 
   return (
