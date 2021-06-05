@@ -80,12 +80,12 @@ export const updateUserPhoto = async (photoURL) => {
   return { name: user.displayName, email: user.email, photoUrl: user.photoURL };
 };
 
-export const createMessage = async ({ channelId, text }) => {
+export const createMessage = async ({ channelId, message }) => {
   return await DB.collection("channels")
     .doc(channelId)
     .collection("messages")
-    .add({
-      text,
+    .set({
+      ...message,
       createdAt: Date.now(),
     });
 };
