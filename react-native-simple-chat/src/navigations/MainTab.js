@@ -23,7 +23,18 @@ const MainTab = ({ navigation, route }) => {
 
   useEffect(() => {
     const title = getFocusedRouteNameFromRoute(route) ?? "Channels";
-    navigation.setOptions({ headerTitle: title });
+    navigation.setOptions({
+      headerTitle: title,
+      headerRight: () =>
+        title === "Channels" && (
+          <MaterialIcons
+            name="add"
+            size={26}
+            style={{ margin: 10 }}
+            onPress={() => navigation.navigate("Channel Creation")}
+          />
+        ),
+    });
   }, [route]);
 
   return (

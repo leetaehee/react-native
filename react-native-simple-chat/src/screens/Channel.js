@@ -1,16 +1,53 @@
-import React from "react";
-import styled from "styled-components/native";
-import { Text } from "react-native";
+import React, { useState, useEffect, useLayoutEffect } from "react";
+import { DB, createMessage, getCurrentUser } from "../utils/firebase";
+import styled, { ThemeContext } from "styled-components/native";
+import { Text, FlatList } from "react-native";
+import { Input } from "../components";
 
 const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.background};
 `;
 
-const Channel = () => {
+const Channel = ({ navigation, route: { params } }) => {
+  const [messages, setMessages] = useState([]);
+  const [text, setText] = useState("");
+
+  useEffect(() => {
+    const unsubscribe = DB.collection("channels")
+      .doc(params.id)
+      .collection("messages")
+      .orderBy("createdAt", "desc")
+      .onSnapshot((snapshot) => {
+        const list = [];
+        snapshot.forEach((doc) => {
+          list.push(doc.data());
+        });
+        setMessages(list);
+      });
+
+    return () => unsubscribe();
+  }, []);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({ headerTitle: params.title || "Channel" });
+  }, []);
+
   return (
     <Container>
-      <Text style={{ fontSize: 24 }}>Channel</Text>
+      <FlatList
+        keyExtractor={(item) => item["id"]}
+        data={messages}
+        renderItem={({ item }) => (
+          <Text style={{ fontSize: 24 }}>{item.text}</Text>
+        )}
+        inverted={true}
+      />
+      <Input
+        value={text}
+        onChangeText={(text) => setText(text)}
+        onSubmitEditing={() => createMessage({ channelId: params.id, text })}
+      />
     </Container>
   );
 };

@@ -1,5 +1,5 @@
 import * as firebase from "firebase";
-import { useColorScheme } from "react-native";
+import "firebase/firestore";
 import config from "../../firebase.json";
 
 const app = firebase.initializeApp(config);
@@ -26,6 +26,21 @@ const uploadImage = async (uri) => {
 
   blob.close();
   return await snapshot.ref.getDownloadURL();
+};
+
+export const DB = firebase.firestore();
+
+export const createChannel = async ({ title, description }) => {
+  const newChannelRef = DB.collection("channels").doc();
+  const id = newChannelRef.id;
+  const newChannel = {
+    id,
+    title,
+    description,
+    createdAt: Date.now(),
+  };
+  await newChannelRef.set(newChannel);
+  return id;
 };
 
 export const login = async ({ email, password }) => {
@@ -63,4 +78,14 @@ export const updateUserPhoto = async (photoURL) => {
     : await uploadImage(photoURL);
   await user.updateProfile({ photoURL: storageUrl });
   return { name: user.displayName, email: user.email, photoUrl: user.photoURL };
+};
+
+export const createMessage = async ({ channelId, text }) => {
+  return await DB.collection("channels")
+    .doc(channelId)
+    .collection("messages")
+    .add({
+      text,
+      createdAt: Date.now(),
+    });
 };
