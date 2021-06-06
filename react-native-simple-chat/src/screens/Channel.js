@@ -38,7 +38,7 @@ const SendButton = (props) => {
 
 const Channel = ({ navigation, route: { params } }) => {
   const theme = useContext(ThemeContext);
-  const { uid, name, photoUrl } = getCurrentUser();
+  const { uid, name, photoURL } = getCurrentUser();
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const Channel = ({ navigation, route: { params } }) => {
         }}
         placeholder="Enter a message..."
         messages={messages}
-        user={{ _id: uid, name, avatar: photoUrl }}
+        user={{ _id: uid, name, avatar: photoURL }}
         onSend={_handleMessageSend}
         alwaysShowSend={true}
         textInputProps={{
